@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chenyou.admin.dao.SysRoleDao">
+
+    <select id="findOneById" parameterType="Long" resultType="com.chenyou.admin.domain.SysRole">
+    	SELECT * FROM sys_role WHERE role_id = #{id}
+    </select>
+
+	<select id="findAll" resultType="com.chenyou.admin.domain.SysRole">
+		SELECT
+			role_id AS roleId,
+			role_name AS roleName,
+			role_auths AS roleAuths,
+			role_version AS roleVersion
+		FROM sys_role
+	</select>
+
+	<select id="findAllByPage" resultType="com.chenyou.admin.domain.SysRole" >
+		SELECT * FROM sys_role
+		<if test="page != null">
+			LIMIT #{page}, #{size}
+		</if>
+	</select>
+
+	<select id="getCountAll" resultType="int">
+		SELECT COUNT(role_id) from sys_role
+	</select>
+
+	<select id="insertRole" parameterType="com.chenyou.admin.domain.SysRole">
+		INSERT INTO sys_role(role_name, role_auths, role_version) VALUES(#{roleName}, #{roleAuths}, #{roleVersion})
+	</select>
+	<update id="updateRole" parameterType="com.chenyou.admin.domain.SysRole">
+		UPDATE sys_role
+		SET role_name = #{roleName},
+			role_auths = #{roleAuths},
+			role_version = #{roleVersion}
+		WHERE role_id = #{roleId}
+	</update>
+
+</mapper>

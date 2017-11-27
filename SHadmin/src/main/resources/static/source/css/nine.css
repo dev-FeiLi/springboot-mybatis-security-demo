@@ -1,0 +1,60 @@
+.icon-unfold {
+    background-color: #bababa;
+    height: 30px;
+    text-align: center;
+    font-family: fontAwesome;
+    font-size: 20px;
+}
+
+.icon-unfold .sidebar-toggle {
+    color: white;
+}
+
+.icon-unfold .sidebar-toggle:before {
+    content: "\f0c9";
+    box-sizing: border-box;
+}
+
+.icon-headfold {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .icon-headfold {
+        height: 50px;
+        text-align: center;
+        padding-left: 15px;
+        font-family: fontAwesome;
+        position: fixed;
+        top: 0;
+        color: white;
+        font-size: 20px;
+        display: block;
+    }
+
+    .icon-headfold .sidebar-antoggle {
+        color: white;
+        line-height: 50px;
+    }
+
+    .sidebar-antoggle:before {
+        content: "\f0c9";
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+
+    .icon-headfold .sr-only {
+        display: none;
+    }
+
+    .icon-headunfold {
+        display: none;
+    }
+
+    .content-header {
+        position: relative;
+        padding: 65px 15px 0 15px;
+    }
+}
+
+.panel a {margin-left: 5px}

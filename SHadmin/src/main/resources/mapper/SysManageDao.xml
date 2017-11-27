@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.chenyou.admin.dao.SysManageDao">
+
+    <select id="findOne" parameterType="Long" resultType="com.chenyou.admin.domain.SysManage">
+        SELECT * FROM sys_manage WHERE man_id = #{manId}
+    </select>
+
+    <select id="findByManAccount" parameterType="String" resultType="com.chenyou.admin.domain.SysManage">
+        SELECT * FROM  sys_manage
+        WHERE man_account = #{manAccount}
+    </select>
+
+    <select id="findAll" parameterType="Map" resultType="com.chenyou.admin.domain.SysManage">
+        SELECT * FROM sys_manage
+        <if test="page != null">
+          LIMIT #{page}, #{size}
+        </if>
+    </select>
+
+    <select id="getCountAll" resultType="int">
+        SELECT COUNT(man_id) from sys_manage
+    </select>
+
+    <insert id="insertManager" parameterType="com.chenyou.admin.domain.SysManage">
+        INSERT INTO sys_manage(man_account, man_passwd, man_name, man_role, man_status, man_add_time, man_version)
+        VALUES(#{manAccount}, #{manPasswd}, #{manName}, #{manRole}, #{manStatus}, #{manAddTime}, #{manVersion})
+    </insert>
+    <update id="updateManager" parameterType="com.chenyou.admin.domain.SysManage">
+        UPDATE sys_manage
+        SET man_account = #{manAccount},
+        man_passwd = #{manPasswd},
+        man_name = #{manName},
+        man_role = #{manRole}
+    </update>
+    
+
+    	
+
+
+    
+
+
+
+
+
+    
+
+    
+
+        
+</mapper>
